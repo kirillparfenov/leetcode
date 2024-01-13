@@ -7,6 +7,7 @@ import java.util.Stack;
 
 // https://leetcode.com/problems/amount-of-time-for-binary-tree-to-be-infected/description/?envType=daily-question&envId=2024-01-10
 
+// описание решения https://leetcode.com/problems/amount-of-time-for-binary-tree-to-be-infected/solutions/4558197/suffix-tree-with-dfs-and-bfs-algorithms-beats-98-by-memory/
 /**
  * Идея решения:<br>
  * Построить новую структуру (суффиксное дерево) с ссылкой на родителя<br>
