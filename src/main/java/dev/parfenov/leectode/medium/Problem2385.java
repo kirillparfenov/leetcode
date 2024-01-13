@@ -36,7 +36,7 @@ public class Problem2385 {
 
             while (!suffixQueue.isEmpty()) {
                 var suffix = suffixQueue.pop();
-                var node = nodeQueue.poll();
+                var node = nodeQueue.pop();
 
                 suffix.val = node.val;
 
