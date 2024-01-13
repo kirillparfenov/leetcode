@@ -55,7 +55,7 @@ public class Problem2385 {
         }
 
         SuffixNode dfsFindStartPosition(int start, SuffixNode suffixRoot) {
-            var queue = new ArrayDeque<SuffixNode>();
+            var queue = new Stack<SuffixNode>();
             queue.push(suffixRoot);
 
             while (!queue.isEmpty()) {
