@@ -15,47 +15,62 @@ import java.util.Stack;
 public class Problem2385 {
     static class Solution {
         public int amountOfTime(TreeNode root, int start) {
-            //подготовить суффиксные ссылки и возвращаем ссылку на стартовую позицию
-            var suffix = buildSuffixLinksAndGetStart(root, start);
+            var suffixRoot = new SuffixNode();
+
+            //строим суффиксное дерево
+            buildSuffixLinksAndGetStart(root, suffixRoot);
+
+            //ищем стартовую позицию
+            var suffix = dfsFindStartPosition(start, suffixRoot);
 
             //ищем максимальную глубину от этого узла
             return bfsMaxDepth(suffix);
         }
 
-        SuffixNode suffixRoot = new SuffixNode();
-
-        SuffixNode buildSuffixLinksAndGetStart(TreeNode root, int start) {
+        void buildSuffixLinksAndGetStart(TreeNode root, SuffixNode suffixRoot) {
             var suffixQueue = new ArrayDeque<SuffixNode>();
             suffixQueue.add(suffixRoot);
 
             var nodeQueue = new ArrayDeque<TreeNode>();
             nodeQueue.add(root);
 
-            SuffixNode startPosition = new SuffixNode();
-
             while (!suffixQueue.isEmpty()) {
                 var suffix = suffixQueue.pop();
                 var node = nodeQueue.poll();
 
                 suffix.val = node.val;
-                if (suffix.val == start) startPosition = suffix;
 
                 if (node.left != null) {
                     suffix.left = new SuffixNode(suffix, node.left.val);
                     suffixQueue.add(suffix.left);
                     nodeQueue.add(node.left);
-                    if (suffix.left.val == start) startPosition = suffix.left;
                 }
 
                 if (node.right != null) {
                     suffix.right = new SuffixNode(suffix, node.right.val);
                     suffixQueue.add(suffix.right);
                     nodeQueue.add(node.right);
-                    if (suffix.right.val == start) startPosition = suffix.right;
                 }
             }
+        }
 
-            return startPosition;
+        SuffixNode dfsFindStartPosition(int start, SuffixNode suffixRoot) {
+            var queue = new ArrayDeque<SuffixNode>();
+            queue.push(suffixRoot);
+
+            while (!queue.isEmpty()) {
+                var node = queue.pop();
+                if (node.val == start)
+                    return node;
+
+                if (node.left != null)
+                    queue.push(node.left);
+
+                if (node.right != null)
+                    queue.push(node.right);
+            }
+
+            return suffixRoot;
         }
 
         int bfsMaxDepth(SuffixNode startPosition) {
