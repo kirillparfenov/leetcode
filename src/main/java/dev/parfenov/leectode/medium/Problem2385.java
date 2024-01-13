@@ -20,7 +20,7 @@ public class Problem2385 {
             var suffixRoot = new SuffixNode();
 
             //строим суффиксное дерево
-            buildSuffixLinks(root, suffixRoot);
+            buildSuffixTree(root, suffixRoot);
 
             //ищем стартовую позицию
             var suffix = dfsFindStartPosition(start, suffixRoot);
@@ -29,7 +29,7 @@ public class Problem2385 {
             return bfsMaxDepth(suffix);
         }
 
-        void buildSuffixLinks(TreeNode root, SuffixNode suffixRoot) {
+        void buildSuffixTree(TreeNode root, SuffixNode suffixRoot) {
             var suffixQueue = new ArrayDeque<SuffixNode>();
             suffixQueue.add(suffixRoot);
 
