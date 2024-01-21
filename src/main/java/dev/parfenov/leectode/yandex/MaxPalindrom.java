@@ -44,6 +44,8 @@ public class MaxPalindrom {
     }
 
     private static String findPalindrome(String s, int left, int right) {
+        //ограничение слева - начало массива
+        //ограничение справа - конец массива
         while (left - 1 >= 0 && right + 1 < s.length() && s.charAt(left - 1) == s.charAt(right + 1)) {
             left--;
             right++;
