@@ -21,7 +21,7 @@ public class MaxPalindrom {
         var max = "";
         int left, right;
         for (int i = 1; i < s.length(); i++) {
-            if (i + 1 < s.length() && s.charAt(i - 1) == s.charAt(i + 1)) { //aaa строка
+            if (i + 1 < s.length() && s.charAt(i - 1) == s.charAt(i + 1)) { //aba строка
                 left = i - 1;
                 right = i + 1;
             } else if (s.charAt(i - 1) == s.charAt(i)) { //aa строка
