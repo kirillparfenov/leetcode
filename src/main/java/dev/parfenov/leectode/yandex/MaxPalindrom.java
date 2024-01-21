@@ -23,7 +23,7 @@ public class MaxPalindrom {
         var max = String.valueOf(s.charAt(0));
         int left, right;
         for (int i = 1; i < s.length(); i++) {
-            if (i + 1 < s.length() && s.charAt(i - 1) == s.charAt(i + 1)) { //aba строка
+            if (i + 1 < s.length() && s.charAt(i - 1) == s.charAt(i + 1)) { //aba палиндром
                 left = i - 1;
                 right = i + 1;
                 var current = findPalindrome(s, left, right);
@@ -31,7 +31,7 @@ public class MaxPalindrom {
                     max = current;
             }
 
-            if (s.charAt(i - 1) == s.charAt(i)) { //aa строка
+            if (s.charAt(i - 1) == s.charAt(i)) { //aa палиндром
                 left = i - 1;
                 right = i;
                 var current = findPalindrome(s, left, right);
@@ -46,7 +46,9 @@ public class MaxPalindrom {
     private static String findPalindrome(String s, int left, int right) {
         //ограничение слева - начало массива
         //ограничение справа - конец массива
-        while (left - 1 >= 0 && right + 1 < s.length() && s.charAt(left - 1) == s.charAt(right + 1)) {
+        // пока равноудаленные элементы равны
+        while (left - 1 >= 0 && right + 1 < s.length()
+                && s.charAt(left - 1) == s.charAt(right + 1)) {
             left--;
             right++;
         }
