@@ -21,7 +21,6 @@ public class RLE {
             counter++;
         }
 
-        //последний подсчет тоже нужно указать, чтобы не потерялся
         return rle.append(previous).append(counter).toString();
     }
 }
