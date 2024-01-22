@@ -23,8 +23,7 @@ public class Problem227_Basic_Calculator {
     }
 
     private static int calculate(String s) {
-        //операторы
-        // и их приоритеты при вычислении выражения
+        //операторы и их приоритеты
         var opPriority = Map.of(
                 '+', 0,
                 '-', 0,
@@ -40,7 +39,7 @@ public class Problem227_Basic_Calculator {
 
             if (Character.isDigit(c)) {
                 //сканим число из символов
-                // и позицию, на которую передвинулось i
+                // и позицию, на которую передвинулось i при скане
                 var numAndPos = getNumAndPos(s, i);
                 numStack.push(numAndPos[0]);
                 i = numAndPos[1] - 1;
