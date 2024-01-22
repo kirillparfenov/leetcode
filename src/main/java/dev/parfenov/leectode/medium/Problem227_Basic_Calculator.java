@@ -61,6 +61,7 @@ public class Problem227_Basic_Calculator {
         while (!opStack.isEmpty())
             calcFromStack(opStack, numStack);
 
+        //в стеке остался результат вычислений
         return numStack.pop();
     }
 
